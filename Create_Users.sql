@@ -32,3 +32,7 @@ GRANT FSDB_STAT to STAT1;
 -- System Privileges for user STAT1
   GRANT CREATE SESSION TO STAT1;
   GRANT UNLIMITED TABLESPACE TO STAT1;
+
+-- additonal notes
+grant create view to fsdb_admin;
+grant create view to fsdb;
