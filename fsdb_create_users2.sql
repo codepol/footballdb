@@ -5,6 +5,12 @@
   GRANT SELECT on fsdb.STAT_IDS to FSDB_STAT;
   GRANT SELECT on fsdb.TEAMS to FSDB_STAT;
   GRANT SELECT on fsdb.TEAM_SEASON_STATS to FSDB_STAT;
+  GRANT INSERT on fsdb.TEAM_SEASON_STATS to FSDB_STAT;
+  
+-- System Privileges for role FSDB_GUEST 
+  GRANT CONNECT TO FSDB_GUEST;
+  GRANT SELECT on fsdb.AVG_GOALS_BY_CITY_V to FSDB_GUEST;
+  GRANT SELECT on fsdb.TEAM_SUMMARY_V to FSDB_GUEST;
  
 -- Create additional users and assign the to those roles
 
