@@ -1,7 +1,7 @@
 # footballdb
 Football Stats DB for Oracle PL/SQL Diploma Project
 
-Name:
+Name: Paul McLaughlin
 Email:
 Phone Number:
 
