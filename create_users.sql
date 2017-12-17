@@ -1,5 +1,5 @@
-Drop user FSDB cascade;
-Drop tablespace fs_db including contents and datafiles;
+DROP USER FSDB cascade;
+DROP TABLESPACE fs_db including contents and datafiles;
 
 -- Create the tablespace, temp tablespace and schema(user)
   CREATE TABLESPACE fs_db
