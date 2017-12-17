@@ -1,3 +1,6 @@
+-- Log in as FSDB user in either SQL Developer or in SQL Plus by saving to a local directory and using the @ symbol
+-- e.g. @create_tables.sql
+
 --Create Tables
 DROP TABLE TEAMS CASCADE CONSTRAINTS ; 
 
