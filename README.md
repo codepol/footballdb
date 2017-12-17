@@ -32,13 +32,8 @@ fsdb_create_users2.sql - This is to create additonal users and assigning the rol
 <b> The scripts should be ran in the following order: </b>
 
 1. create_users.sql
-
 2. create_tables.sql
-
 3. insert_into_tables.sql
-
 4. create_views.sql
-
 5. fsdb_create_users2.sql
-
 6....TBC
