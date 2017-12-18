@@ -52,3 +52,22 @@ BEGIN
   END IF;
 END secure_dml;
 
+-- Create a procedure to track when a team moves to a new stadium.
+-- A new entry is created on table TEAM_STAD_HIST which is actioned using a trigger
+
+create or replace PROCEDURE add_stad_hist
+  (  p_teamid          team_stad_hist.teamid%type
+   , p_stadid          TEAM_STAD_HIST.STADIUMID%type
+   , p_enddate         TEAM_STAD_HIST.ENDDATE%type  )
+IS
+BEGIN
+  INSERT INTO TEAM_STAD_HIST (teamid, STADIUMID, ENDDATE)
+    VALUES(p_teamid, p_stadid, p_enddate);
+END add_stad_hist;
+
+create or replace TRIGGER update_stad_hist
+  AFTER UPDATE OF stadiumid ON teams
+  FOR EACH ROW
+BEGIN
+  add_stad_hist(:old.teamid, :old.stadiumid, sysdate);
+END;
