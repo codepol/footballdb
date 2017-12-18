@@ -14,6 +14,7 @@ Phone Number:
 
 This is a project to create a working database showing team statisitics top level European Football over the past 3 seasons.  The leagues in question are the English Premier League, the German Bundesliga, the Spanish La Liga and the French Ligue 1.  Statistics have been taken from various sources including whoscored.com and Wikipedia.  Using role permissions certain users can enter stats on to the tables, my "Stattos", and guest users can view lists based on the stats entered on the underlying tables.
 
+
 <i> Files and Description: </i>
 
 create_users.sql - This is to create the tablespace, schema and roles and permissions required for the main DBA.
@@ -28,6 +29,8 @@ fsdb_create_users2.sql - This is to create additonal users and assigning the rol
 
 create_objects.sql - Additional sequences, triggers and functions in order to maintain database entegrity 
 
+cursor - Can be run to show the top 10 teams by order of stadium capacity
+
 
 <i> Technical Data: </i>
 
@@ -39,4 +42,4 @@ create_objects.sql - Additional sequences, triggers and functions in order to ma
 4. create_views.sql
 5. fsdb_create_users2.sql
 6. create_objects.sql
-7....TBC
+7. TBC
