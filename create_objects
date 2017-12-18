@@ -1,3 +1,5 @@
+ -- Add sequences in order to create unique entries each time in the correct order
+ 
  CREATE SEQUENCE 
  "FSDB"."TESESTAT_SEQ"  MINVALUE 1 MAXVALUE 99999999 INCREMENT BY 1 START WITH 1873 
  NOCACHE  NOORDER  NOCYCLE ;
@@ -22,6 +24,8 @@
  "FSDB"."COMP_SEQ"  MINVALUE 1 MAXVALUE 9999 INCREMENT BY 1 START WITH 17
  NOCACHE  NOORDER  NOCYCLE ;
 
+-- Create a trigger to print out any capacity change when updating the stadiums table
+
 CREATE OR REPLACE TRIGGER display_capacity_change
 BEFORE DELETE OR INSERT OR UPDATE ON stadiums
 FOR EACH ROW 
@@ -34,6 +38,9 @@ BEGIN
    dbms_output.put_line('New Capacity: ' || :NEW.capacity); 
    dbms_output.put_line('Capacity difference: ' || cap_diff); 
 END;
+
+-- Create a procedure to protect the database from changes outside of normal hours.
+-- Allows a window for routine updates and maintenance
 
 create or replace PROCEDURE secure_dml
 IS
