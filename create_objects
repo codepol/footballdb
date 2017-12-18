@@ -34,3 +34,14 @@ BEGIN
    dbms_output.put_line('New Capacity: ' || :NEW.capacity); 
    dbms_output.put_line('Capacity difference: ' || cap_diff); 
 END;
+
+create or replace PROCEDURE secure_dml
+IS
+BEGIN
+  IF TO_CHAR (SYSDATE, 'HH24:MI') NOT BETWEEN '03:00' AND '23:59'
+        THEN
+	RAISE_APPLICATION_ERROR (-20205,
+		'You may not make changes during this time.  Go to bed');
+  END IF;
+END secure_dml;
+
