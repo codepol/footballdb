@@ -1,0 +1,5 @@
+1. Create a trigger to produce a difference figure when updating STADIUMS.CAPACITY field? 
+2. Trigger / procedure / packaged to create a an entry into stadiums_history where team moves to a new stadium 
+3. Trigger to audit entries by role FSDB_STAT.
+
+see https://www.tutorialspoint.com/plsql/plsql_triggers.htm
