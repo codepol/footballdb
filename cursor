@@ -14,7 +14,7 @@ BEGIN
   LOOP
     FETCH stad_cursor into team, stad, cap;
     exit when stad_cursor%ROWCOUNT > 10 or stad_cursor%NOTFOUND;
-    SYS.DBMS_OUTPUT.PUT_LINE (team || ' ' || stad || ' ' || cap);
+    SYS.DBMS_OUTPUT.PUT_LINE (team || ', ' || stad || ', ' || cap);
     end loop;
     close stad_cursor;
 end;
