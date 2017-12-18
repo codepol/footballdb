@@ -26,6 +26,8 @@ create_views.sql - This will create views that our guest users can look at.
 
 fsdb_create_users2.sql - This is to create additonal users and assigning the roles and nescessary permissions to them
 
+create_objects.sql - Additional sequences, triggers and functions in order to maintain database entegrity 
+
 
 <i> Technical Data: </i>
 
@@ -36,4 +38,5 @@ fsdb_create_users2.sql - This is to create additonal users and assigning the rol
 3. insert_into_tables.sql
 4. create_views.sql
 5. fsdb_create_users2.sql
-6....TBC
+6. create_objects.sql
+7....TBC
