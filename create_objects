@@ -21,3 +21,16 @@
   CREATE SEQUENCE 
  "FSDB"."COMP_SEQ"  MINVALUE 1 MAXVALUE 9999 INCREMENT BY 1 START WITH 17
  NOCACHE  NOORDER  NOCYCLE ;
+
+CREATE OR REPLACE TRIGGER display_capacity_change
+BEFORE DELETE OR INSERT OR UPDATE ON stadiums
+FOR EACH ROW 
+WHEN (NEW.stadiumid > 0) 
+DECLARE 
+   cap_diff number; 
+BEGIN 
+   cap_diff := :NEW.capacity  - :OLD.capacity; 
+   dbms_output.put_line('Old Capacity: ' || :OLD.capacity); 
+   dbms_output.put_line('New Capacity: ' || :NEW.capacity); 
+   dbms_output.put_line('Capacity difference: ' || cap_diff); 
+END;
