@@ -1,4 +1,5 @@
--- CURSOR EXAMPLE TO SHOW TOP 10 TEAMS BY STADIUM CAPACITY
+-- CURSOR EXAMPLE TO SHOW TOP x TEAMS BY STADIUM CAPACITY
+-- where x is defined by the user
 
 set serveroutput on
 declare
@@ -13,7 +14,7 @@ BEGIN
   open stad_cursor;
   LOOP
     FETCH stad_cursor into team, stad, cap;
-    exit when stad_cursor%ROWCOUNT > 10 or stad_cursor%NOTFOUND;
+    exit when stad_cursor%ROWCOUNT > &NO_OF_TEAMS or stad_cursor%NOTFOUND;
     SYS.DBMS_OUTPUT.PUT_LINE (team || ', ' || stad || ', ' || cap);
     end loop;
     close stad_cursor;
