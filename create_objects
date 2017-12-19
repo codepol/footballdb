@@ -71,3 +71,63 @@ create or replace TRIGGER update_stad_hist
 BEGIN
   add_stad_hist(:old.teamid, :old.stadiumid, sysdate);
 END;
+
+-- Create Functions to return team with best stats in the current season. 
+
+CREATE OR REPLACE FUNCTION MaxGoals
+RETURN VARCHAR2 IS 
+   mgoals varchar2(30); 
+BEGIN 
+   SELECT t2.teamname into mgoals 
+   FROM TEAM_SEASON_STATS t, COMPETITIONS c, teams t2
+   where t.COMPID = c.COMPID
+   and t.TEAMID = t2.TEAMID
+   and c.INDCURRENT = 'Y'
+   and t.STATID = 5
+   and t.VALUE = 
+     (select max(value) 
+     from team_season_stats t3, COMPETITIONS c2
+     where t3.COMPID = c2.COMPID 
+     and t3.statid = 5
+     and c2.INDCURRENT = 'Y');
+   RETURN mgoals; 
+END;
+
+CREATE OR REPLACE FUNCTION MaxPassPerc
+RETURN VARCHAR2 IS 
+   mpass varchar2(30); 
+BEGIN 
+   SELECT t2.teamname into mpass 
+   FROM TEAM_SEASON_STATS t, COMPETITIONS c, teams t2
+   where t.COMPID = c.COMPID
+   and t.TEAMID = t2.TEAMID
+   and c.INDCURRENT = 'Y'
+   and t.STATID = 25
+   and t.VALUE = 
+     (select max(value) 
+     from team_season_stats t3, COMPETITIONS c2
+     where t3.COMPID = c2.COMPID 
+     and t3.statid = 25
+     and c2.INDCURRENT = 'Y');
+   RETURN mpass; 
+END;
+
+CREATE OR REPLACE FUNCTION MaxPossesion
+RETURN VARCHAR2 IS 
+   mpos varchar2(30); 
+BEGIN 
+   SELECT t2.teamname into mpos
+   FROM TEAM_SEASON_STATS t, COMPETITIONS c, teams t2
+   where t.COMPID = c.COMPID
+   and t.TEAMID = t2.TEAMID
+   and c.INDCURRENT = 'Y'
+   and t.STATID = 20
+   and t.VALUE = 
+     (select max(value) 
+     from team_season_stats t3, COMPETITIONS c2
+     where t3.COMPID = c2.COMPID 
+     and t3.statid = 20
+     and c2.INDCURRENT = 'Y');
+   RETURN mpos; 
+END;
+
