@@ -1,5 +1,5 @@
--- Log in as FSDB user in either SQL Developer or in SQL Plus by saving to a local directory and using the @ symbol
--- e.g. @create_tables.sql
+-- Switch user to FSDB so I don't have to specify schema prefix 
+ALTER SESSION SET CURRENT_SCHEMA = FSDB;
 
 --Create Tables
 DROP TABLE TEAMS CASCADE CONSTRAINTS ; 
