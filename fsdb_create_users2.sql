@@ -1,4 +1,5 @@
--- Log in as FSDB user and run in SQL Plus or SQL Developer
+-- Switch user to FSDB so I don't have to specify schema prefix 
+ALTER SESSION SET CURRENT_SCHEMA = FSDB;
 
 -- System Privileges for role FSDB_STAT 
   GRANT CONNECT TO FSDB_STAT;
