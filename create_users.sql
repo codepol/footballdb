@@ -5,12 +5,12 @@ DROP TABLESPACE fs_db_tmp including contents and datafiles;
 -- Create the tablespace, temp tablespace and schema(user)
   CREATE TABLESPACE fs_db
   DATAFILE 'fs_db.dat' 
-  SIZE 200M
+  SIZE 200M reuse
   ONLINE;
 
   CREATE TEMPORARY TABLESPACE fs_db_tmp
   TEMPFILE 'fs_db_tmp1.dbf'
-  SIZE 10M
+  SIZE 10M reuse
   AUTOEXTEND ON;
 
   CREATE USER FSDB
