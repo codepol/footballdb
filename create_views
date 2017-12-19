@@ -1,3 +1,6 @@
+-- Switch user to FSDB so I don't have to specify schema prefix 
+ALTER SESSION SET CURRENT_SCHEMA = FSDB;
+
 -- create views
 
 CREATE OR REPLACE FORCE VIEW "FSDB"."AVG_GOALS_BY_CITY_V" ("CITY", "NO_OF_TEAMS", "AVG_GOALS_CURR_SEASON") AS 
