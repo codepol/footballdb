@@ -1,4 +1,7 @@
- -- Add sequences in order to create unique entries each time in the correct order
+ -- Switch user to FSDB so I don't have to specify schema prefix 
+ALTER SESSION SET CURRENT_SCHEMA = FSDB;
+
+-- Add sequences in order to create unique entries each time in the correct order
  
  CREATE SEQUENCE 
  "FSDB"."TESESTAT_SEQ"  MINVALUE 1 MAXVALUE 99999999 INCREMENT BY 1 START WITH 1873 
