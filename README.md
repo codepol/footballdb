@@ -34,7 +34,7 @@ cursor - Can be run to show the top 10 teams by order of stadium capacity
 
 <i> Technical Data: </i>
 
-<b> The scripts should be ran in the following order: </b>
+To install on your system, simply run the setup file via SQLPlus or in SQL Developer.  If installing manually using the individual scripts then <b> the scripts should be ran in the following order: </b>
 
 1. create_users.sql
 2. create_tables.sql
