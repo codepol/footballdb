@@ -1,4 +1,4 @@
- -- Switch user to FSDB so I don't have to specify schema prefix 
+-- Switch user to FSDB so I don't have to specify schema prefix 
 ALTER SESSION SET CURRENT_SCHEMA = FSDB;
 
 -- Add sequences in order to create unique entries each time in the correct order
@@ -41,7 +41,7 @@ BEGIN
    dbms_output.put_line('New Capacity: ' || :NEW.capacity); 
    dbms_output.put_line('Capacity difference: ' || cap_diff); 
 END;
-
+/
 -- Create a procedure to protect the database from changes outside of normal hours.
 -- Allows a window for routine updates and maintenance
 
@@ -54,7 +54,7 @@ BEGIN
 		'You may not make changes during this time.  Go to bed');
   END IF;
 END secure_dml;
-
+/
 -- Create a procedure to track when a team moves to a new stadium.
 -- A new entry is created on table TEAM_STAD_HIST which is actioned using a trigger
 
@@ -67,14 +67,14 @@ BEGIN
   INSERT INTO TEAM_STAD_HIST (teamid, STADIUMID, ENDDATE)
     VALUES(p_teamid, p_stadid, p_enddate);
 END add_stad_hist;
-
+/
 create or replace TRIGGER update_stad_hist
   AFTER UPDATE OF stadiumid ON teams
   FOR EACH ROW
 BEGIN
   add_stad_hist(:old.teamid, :old.stadiumid, sysdate);
 END;
-
+/
 -- Create Functions to return team with best stats in the current season. 
 
 CREATE OR REPLACE FUNCTION MaxGoals
@@ -95,7 +95,7 @@ BEGIN
      and c2.INDCURRENT = 'Y');
    RETURN mgoals; 
 END;
-
+/
 CREATE OR REPLACE FUNCTION MaxPassPerc
 RETURN VARCHAR2 IS 
    mpass varchar2(30); 
@@ -114,7 +114,7 @@ BEGIN
      and c2.INDCURRENT = 'Y');
    RETURN mpass; 
 END;
-
+/
 CREATE OR REPLACE FUNCTION MaxPossesion
 RETURN VARCHAR2 IS 
    mpos varchar2(30); 
@@ -133,4 +133,4 @@ BEGIN
      and c2.INDCURRENT = 'Y');
    RETURN mpos; 
 END;
-
+/
