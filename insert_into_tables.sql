@@ -2263,3 +2263,35 @@ Insert into FSDB.TEAM_SEASON_STATS (TESESTID,TEAMID,VALUE,STATID,COMMENTS,DATELA
 Insert into FSDB.TEAM_SEASON_STATS (TESESTID,TEAMID,VALUE,STATID,COMMENTS,DATELASTUPD,COMPID) values (1853,122,1,40,null,to_date('16-JUN-01','DD-MON-RR'),12);
 Insert into FSDB.TEAM_SEASON_STATS (TESESTID,TEAMID,VALUE,STATID,COMMENTS,DATELASTUPD,COMPID) values (1854,116,2,40,null,to_date('16-JUN-01','DD-MON-RR'),12);
 commit;
+
+
+ALTER TABLE teams
+ADD CONSTRAINT fk_faid
+  FOREIGN KEY (faid)
+  REFERENCES football_assoc(faid);
+
+ALTER TABLE teams
+ADD CONSTRAINT fk_stadiumid
+  FOREIGN KEY (stadiumid)
+  REFERENCES stadiums(stadiumid);
+  
+ALTER TABLE team_season_stats
+ADD CONSTRAINT fk_teamid
+  FOREIGN KEY (teamid)
+  REFERENCES teams(teamid);
+  
+ALTER TABLE team_season_stats
+ADD CONSTRAINT fk_statid
+  FOREIGN KEY (statid)
+  REFERENCES stat_ids(statid);
+  
+ALTER TABLE team_season_stats
+ADD CONSTRAINT fk_compid
+  FOREIGN KEY (compid)
+  REFERENCES competitions(compid);
+  
+ALTER TABLE stadiums
+ADD CONSTRAINT fk_teamid2
+  FOREIGN KEY (teamid)
+  REFERENCES teams(teamid);
+commit;
