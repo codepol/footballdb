@@ -69,38 +69,10 @@ CREATE TABLE FOOTBALL_ASSOC (
   CONSTRAINT FAID_PK PRIMARY KEY (FAID)
 );
 
+DROP TABLE TEAM_STAD_HIST CASCADE CONSTRAINTS;
+
 CREATE TABLE TEAM_STAD_HIST (
   TEAMID	NUMBER (8),
   STADIUMID	NUMBER (8) NOT NULL,
   ENDDATE DATE
 );
-
-ALTER TABLE teams
-ADD CONSTRAINT fk_faid
-  FOREIGN KEY (faid)
-  REFERENCES football_assoc(faid);
-
-ALTER TABLE teams
-ADD CONSTRAINT fk_stadiumid
-  FOREIGN KEY (stadiumid)
-  REFERENCES stadiums(stadiumid);
-  
-ALTER TABLE team_season_stats
-ADD CONSTRAINT fk_teamid
-  FOREIGN KEY (teamid)
-  REFERENCES teams(teamid);
-  
-ALTER TABLE team_season_stats
-ADD CONSTRAINT fk_statid
-  FOREIGN KEY (statid)
-  REFERENCES stat_ids(statid);
-  
-ALTER TABLE team_season_stats
-ADD CONSTRAINT fk_compid
-  FOREIGN KEY (compid)
-  REFERENCES competitions(compid);
-  
-ALTER TABLE stadiums
-ADD CONSTRAINT fk_teamid2
-  FOREIGN KEY (teamid)
-  REFERENCES teams(teamid);
