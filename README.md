@@ -17,20 +17,25 @@ This is a project to create a working database showing team statisitics top leve
 
 <i> Files and Description: </i>
 
+setup.sql - This is the master installation file which can be ran to create the database and objects.  It contains a script to run create_users, create_tables, inster_into_tables, create_views, fsdb_create_users2 and create_objects file to enable a quick and easy setup to get you started.
+
 create_users.sql - This is to create the tablespace, schema and roles and permissions required for the main DBA.
 
 create_tables.sql - This will create the tables needed for the project
 
-insert_into_tables.sql - This will insert the existing data collected as at end of November 2017
+insert_into_tables.sql - This will insert the existing data collected up to the end of November 2017.
 
 create_views.sql - This will create views that our guest users can look at.
 
-fsdb_create_users2.sql - This is to create additonal users and assigning the roles and nescessary permissions to them
+fsdb_create_users2.sql - This is to create additonal users and assigning the roles and nescessary permissions to them.
 
-create_objects.sql - Additional sequences, triggers and functions in order to maintain database entegrity 
+create_objects.sql - Additional sequences, triggers, functions and packages in order to maintain database entegrity and automate certain tasks. 
 
-cursor - Can be run to show the top 10 teams by order of stadium capacity
+rep_topcapx.sql - Report to show the stadiums with with the highest capacity.  It demonstrates the use of a cursor and can be run to show the top x teams by order of stadium capacity, where x is defined at run-time.  Can be run using the @ symbol in SQL PLus.
 
+report_topcap.sql - Report to show the stadiums with with a capacity over 50,000.  This is the predecessor of the rep_topcapx and demonstrates the ability to format SQL reports.  Can be run using the @ symbol in SQL PLus.
+
+fsdb_model_screenshots.docx - An illustrative image Shows the relationship between the tables and views in the schema.
 
 <i> Technical Data: </i>
 
@@ -42,4 +47,3 @@ To install on your system, simply run the setup.sql file via SQLPlus or in SQL D
 4. create_views.sql
 5. fsdb_create_users2.sql
 6. create_objects.sql
-7. TBC
