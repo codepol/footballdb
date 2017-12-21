@@ -134,3 +134,57 @@ BEGIN
    RETURN mpos; 
 END;
 /
+
+-- Create a package to get FA Name and Top Division with a user-defined variable for FA ID
+
+create or replace PACKAGE associations AS
+  -- get FA country and name as fullname
+  FUNCTION get_fullname(n_faid NUMBER)
+    RETURN VARCHAR2;
+  -- get FA top division
+  FUNCTION get_topdiv(n_faid NUMBER)
+    RETURN VARCHAR2;
+END associations;
+
+/
+
+--  Package associations body for above with further detail
+
+CREATE OR REPLACE PACKAGE BODY associations AS
+  -- get FA country and name as fullname
+  FUNCTION get_fullname(n_faid NUMBER) RETURN VARCHAR2 IS
+      v_fullname VARCHAR2(46);
+  BEGIN
+    SELECT country || ',' ||  assocname
+    INTO v_fullname
+    FROM football_assoc
+    WHERE faid = n_faid;
+ 
+    RETURN v_fullname;
+ 
+  EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    RETURN NULL;
+  WHEN TOO_MANY_ROWS THEN
+    RETURN NULL;
+  END; -- end get_fullname
+ 
+   -- get FA top division
+  FUNCTION get_topdiv(n_faid NUMBER) RETURN VARCHAR2 IS
+    n_topdiv VARCHAR2(46);
+  BEGIN
+    SELECT topdivision
+    INTO n_topdiv
+    FROM football_assoc
+    WHERE faid = n_faid;
+ 
+    RETURN n_topdiv;
+ 
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+      WHEN TOO_MANY_ROWS THEN
+        RETURN NULL;
+  END;
+END associations;
+/
