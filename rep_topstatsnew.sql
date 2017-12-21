@@ -1,3 +1,6 @@
+-- Report to show the top teams in the current season by Highest Possession %, Highest Pass Completion %
+-- and top goal scorers.  Can be run using the @ symbol in SQL PLus.
+
 set serveroutput on
 set pagesize 24
 set newpage 0
