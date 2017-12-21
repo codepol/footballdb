@@ -17,15 +17,15 @@ This is a project to create a working database showing team statisitics top leve
 
 <i> Files and Description: </i>
 
-setup.sql - This is the master installation file which can be ran to create the database and objects.  It contains a script to run create_users, create_tables, inster_into_tables, create_views, fsdb_create_users2 and create_objects file to enable a quick and easy setup to get you started.
+setup.sql - This is the master installation file which can be ran to create the database and objects.  It contains a script to run create_users, create_tables, insert_into_tables, create_views, fsdb_create_users2 and create_objects file to enable a quick and easy setup to get you started.
 
 create_users.sql - This is to create the tablespace, schema and roles and permissions required for the main DBA.
 
 create_tables.sql - This will create the tables needed for the project
 
-insert_into_tables.sql - This will insert the existing data collected up to the end of November 2017.
+insert_into_tables.sql - This will insert the existing data collected up to the end of November 2017 and adds the foreign key constraints to the tables.
 
-create_views.sql - This will create views that our guest users can look at.
+create_views.sql - This will create views to enable better and more user-friendly lists reporting.
 
 fsdb_create_users2.sql - This is to create additonal users and assigning the roles and nescessary permissions to them.
 
