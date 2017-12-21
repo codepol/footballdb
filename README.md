@@ -31,9 +31,11 @@ fsdb_create_users2.sql - This is to create additonal users and assigning the rol
 
 create_objects.sql - Additional sequences, triggers, functions and packages in order to maintain database entegrity and automate certain tasks. 
 
+rep_topstatsnew.sql - Report to show the best performing teams in three areas; Possesion%, Pass Completion Rate and Goals Scored.  Can be run using the @ symbol in SQL PLus. 
+
 rep_topcapx.sql - Report to show the stadiums with with the highest capacity.  It demonstrates the use of a cursor and can be run to show the top x teams by order of stadium capacity, where x is defined at run-time.  Can be run using the @ symbol in SQL PLus.
 
-report_topcap.sql - Report to show the stadiums with with a capacity over 50,000.  This is the predecessor of the rep_topcapx and demonstrates the ability to format SQL reports.  Can be run using the @ symbol in SQL PLus.
+report_topcap.sql - Report to show the stadiums with with a capacity over 50,000.  This is the predecessor of the rep_topcapx and demonstrates the ability to format columns heading for SQL reports.  Can be run using the @ symbol in SQL PLus.
 
 fsdb_model_screenshots.docx - An illustrative image Shows the relationship between the tables and views in the schema.
 
