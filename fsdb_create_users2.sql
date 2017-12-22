@@ -42,10 +42,6 @@ GRANT FSDB_GUEST to GUEST1;
 
 -- System Privileges for user GUEST1
   GRANT CREATE SESSION TO GUEST1;
-  grant EXECUTE on fsdb.associations to guest1;
-  grant execute on fsdb.MAXGOALS to guest1;
-  grant execute on fsdb.MAXPASSPERC to guest1;
-  grant execute on fsdb.maxpossesion to guest1;
 
 -- System Privileges for user STAT1
   GRANT CREATE SESSION TO STAT1;
