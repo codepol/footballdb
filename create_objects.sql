@@ -188,3 +188,9 @@ CREATE OR REPLACE PACKAGE BODY associations AS
   END;
 END associations;
 /
+-- Give permissions to use the functions and packages required for reporting
+
+  grant EXECUTE on fsdb.associations to guest1;
+  grant execute on fsdb.MAXGOALS to guest1;
+  grant execute on fsdb.MAXPASSPERC to guest1;
+  grant execute on fsdb.maxpossesion to guest1;
