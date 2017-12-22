@@ -5,9 +5,9 @@
 
 Name: Paul McLaughlin
 
-Email:
+Email: polmaglochlainn@gmail.com
 
-Phone Number:
+Phone Number: 0894591310
 
 
 <i> Project Brief: </i>
@@ -37,7 +37,7 @@ rep_topcapx.sql - Report to show the stadiums with with the highest capacity.  I
 
 report_topcap.sql - Report to show the stadiums with with a capacity over 50,000.  This is the predecessor of the rep_topcapx and demonstrates the ability to format columns heading for SQL reports.  Can be run using the @ symbol in SQL PLus.
 
-fsdb_model_screenshots.docx - An illustrative image Shows the relationship between the tables and views in the schema.
+fsdb_model_screenshots.docx - An illustrative image showing the relationship between the tables and views in the schema with prinary key and foreign key links.
 
 <i> Technical Data: </i>
 
@@ -49,3 +49,9 @@ To install on your system, simply run the setup.sql file via SQLPlus or in SQL D
 4. create_views.sql
 5. fsdb_create_users2.sql
 6. create_objects.sql
+
+========================================================================================================================================
+
+Thanks for reading and please email if you have any comments or suggestions.
+
+Paul
