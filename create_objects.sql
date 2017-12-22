@@ -29,7 +29,8 @@ ALTER SESSION SET CURRENT_SCHEMA = FSDB;
 
 -- Create a trigger to print out any capacity change when updating the stadiums table
 
-CREATE OR REPLACE TRIGGER display_capacity_change
+
+CREATE OR REPLACE TRIGGER fsdb.display_capacity_change
 BEFORE DELETE OR INSERT OR UPDATE ON stadiums
 FOR EACH ROW 
 WHEN (NEW.stadiumid > 0) 
@@ -45,7 +46,7 @@ END;
 -- Create a procedure to protect the database from changes outside of normal hours.
 -- Allows a window for routine updates and maintenance
 
-create or replace PROCEDURE secure_dml
+create or replace PROCEDURE fsdb.secure_dml
 IS
 BEGIN
   IF TO_CHAR (SYSDATE, 'HH24:MI') NOT BETWEEN '03:00' AND '23:59'
@@ -58,7 +59,7 @@ END secure_dml;
 -- Create a procedure to track when a team moves to a new stadium.
 -- A new entry is created on table TEAM_STAD_HIST which is actioned using a trigger
 
-create or replace PROCEDURE add_stad_hist
+create or replace PROCEDURE fsdb.add_stad_hist
   (  p_teamid          team_stad_hist.teamid%type
    , p_stadid          TEAM_STAD_HIST.STADIUMID%type
    , p_enddate         TEAM_STAD_HIST.ENDDATE%type  )
@@ -68,7 +69,7 @@ BEGIN
     VALUES(p_teamid, p_stadid, p_enddate);
 END add_stad_hist;
 /
-create or replace TRIGGER update_stad_hist
+create or replace TRIGGER fsdb.update_stad_hist
   AFTER UPDATE OF stadiumid ON teams
   FOR EACH ROW
 BEGIN
@@ -77,7 +78,7 @@ END;
 /
 -- Create Functions to return team with best stats in the current season. 
 
-CREATE OR REPLACE FUNCTION MaxGoals
+CREATE OR REPLACE FUNCTION fsdb.maxgoals
 RETURN VARCHAR2 IS 
    mgoals varchar2(30); 
 BEGIN 
@@ -96,7 +97,7 @@ BEGIN
    RETURN mgoals; 
 END;
 /
-CREATE OR REPLACE FUNCTION MaxPassPerc
+CREATE OR REPLACE FUNCTION fsdb.maxpassperc
 RETURN VARCHAR2 IS 
    mpass varchar2(30); 
 BEGIN 
@@ -115,7 +116,7 @@ BEGIN
    RETURN mpass; 
 END;
 /
-CREATE OR REPLACE FUNCTION MaxPossesion
+CREATE OR REPLACE FUNCTION fsdb.maxpossesion
 RETURN VARCHAR2 IS 
    mpos varchar2(30); 
 BEGIN 
@@ -137,20 +138,18 @@ END;
 
 -- Create a package to get FA Name and Top Division with a user-defined variable for FA ID
 
-create or replace PACKAGE associations AS
+create or replace PACKAGE fsdb.associations AS
   -- get FA country and name as fullname
   FUNCTION get_fullname(n_faid NUMBER)
     RETURN VARCHAR2;
   -- get FA top division
   FUNCTION get_topdiv(n_faid NUMBER)
     RETURN VARCHAR2;
-END associations;
-
+END;
 /
-
 --  Package associations body for above with further detail
 
-CREATE OR REPLACE PACKAGE BODY associations AS
+CREATE OR REPLACE PACKAGE BODY fsdb.associations AS
   -- get FA country and name as fullname
   FUNCTION get_fullname(n_faid NUMBER) RETURN VARCHAR2 IS
       v_fullname VARCHAR2(46);
@@ -186,7 +185,7 @@ CREATE OR REPLACE PACKAGE BODY associations AS
       WHEN TOO_MANY_ROWS THEN
         RETURN NULL;
   END;
-END associations;
+END;
 /
 -- Give permissions to use the functions and packages required for reporting
 
