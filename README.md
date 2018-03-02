@@ -1,15 +1,6 @@
 # footballdb
 <b> Football Stats DB for Oracle PL/SQL Diploma Project </b>
 
-<i> Details: </i>
-
-Name: Paul McLaughlin
-
-Email: polmaglochlainn@gmail.com
-
-Phone Number: 0894591310
-
-
 <i> Project Brief: </i>
 
 This is a project to create a working database showing team statisitics top level European Football over the past 3 seasons.  The leagues in question are the English Premier League, the German Bundesliga, the Spanish La Liga and the French Ligue 1.  Statistics have been taken from various sources including whoscored.com and Wikipedia.  Using role permissions certain users can enter stats on to the tables, my "Stattos", and guest users can view lists based on the stats entered on the underlying tables.
